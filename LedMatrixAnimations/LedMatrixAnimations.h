@@ -1,12 +1,17 @@
 #ifndef LedMatrixAnimations_H
 #define LedMatrixAnimations_H
 
-#include <Arduino.h>
-//#include <WConstants.h>
+#if defined(ARDUINO) && ARDUINO >= 100
+  #include "Arduino.h"
+#else
+  #include "WProgram.h"
+#endif
+
 #include <LedControl.h>
 
 class LedMatrixAnimations
 {
+
 public:
 	LedMatrixAnimations();
 	~LedMatrixAnimations();
@@ -19,7 +24,7 @@ public:
 	void blinkClose(int delayBlink);
 	void blinkOpen(int delayBlink);
 
-	LedControl LM = LedControl(11, 13, 12, 1);
 
+	LedControl ledMatrix;
 };
 #endif
